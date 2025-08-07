@@ -1,0 +1,349 @@
+/* ------------------- */
+/* --- Global Styles & Setup --- */
+/* ------------------- */
+
+:root {
+    --primary-color: #0A0A0A; /* Darkest Black */
+    --secondary-color: #00BFFF; /* Neon Blue (DeepSkyBlue) */
+    --text-color: #EAEAEA;
+    --subtle-gray: #202020;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* This enables the snap scrolling effect for the whole page */
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* Each direct child section of the body will be a snap point */
+.snap-section {
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 5%;
+    position: relative;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+/* ------------------- */
+/* --- Section A: Header & Hero --- */
+/* ------------------- */
+
+#header-section {
+    justify-content: flex-start; /* Align content to the top */
+}
+
+.header-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* A-Top: Logo and Navigation */
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    width: 100%;
+    border-bottom: 1px solid var(--subtle-gray);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-shadow: 0 0 2px var(--secondary-color);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+}
+
+.main-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--secondary-color);
+    text-shadow: 0 0 5px var(--secondary-color);
+}
+
+/* A-Bottom: Hero Content */
+.hero-section {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem); /* Responsive font size */
+    margin-bottom: 1rem;
+    max-width: 800px;
+    line-height: 1.2;
+}
+
+.hero-section h1 .highlight {
+    color: var(--secondary-color);
+}
+
+.hero-section p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    max-width: 650px;
+    color: #b0b0b0;
+    font-weight: 300;
+}
+
+/* ------------------- */
+/* --- Section B: Animation & Search --- */
+/* ------------------- */
+
+#search-section {
+    flex-direction: column; /* Side-by-side layout */
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* B-Animation: AI Animation Container */
+.animation-container {
+    flex: 8; /* Takes up 4 parts of the space */
+    height: 100%;
+    border-radius: 15px;
+    background: #2a1d1d;
+    position: relative;
+}
+
+#ai-canvas {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* B-Search: Search Bar Container */
+.search-container {
+    flex: 0.1; /* Takes up 1 part of the space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    padding: 0rem;
+    border-radius: 20px;
+    background: #111;
+    width: 80%;
+    margin-bottom: 3  rem;
+}
+
+.search-container h2 {
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.search-bar {
+    width: 100%;
+    position: relative;
+}
+
+#search-input {
+    width: 100%;
+    padding: 1rem 3.5rem 1rem 1rem;
+    background-color: var(--primary-color);
+    border: 1px solid var(--subtle-gray);
+    border-radius: 30px;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+}
+
+.search-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    color: var(--secondary-color);
+}
+
+/* ------------------- */
+/* --- Section C: Features --- */
+/* ------------------- */
+
+#features-section {
+    gap: 3rem;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.feature-card {
+    background: #111;
+    border: 1px solid var(--subtle-gray);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--secondary-color);
+    box-shadow: 0 10px 25px rgba(0, 191, 255, 0.2);
+}
+
+.feature-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1.5rem auto;
+    color: var(--secondary-color);
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+    color: #b0b0b0;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* ------------------- */
+/* --- Section D: Footer --- */
+/* ------------------- */
+
+#footer-section {
+    background-color: #000; /* Even darker for contrast */
+    align-content: center;  
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 3rem 0;
+
+}
+
+.footer-column h4 {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 1rem;
+}
+
+.footer-column a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: var(--secondary-color);
+}
+
+.footer-bottom {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--subtle-gray);
+    color: #888;
+}
+
+/* ------------------- */
+/* --- Responsive Design --- */
+/* ------------------- */
+
+@media (max-width: 768px) {
+    .snap-section {
+        height: auto; /* Allow sections to grow on mobile */
+        min-height: 100vh; /* Ensure they are at least full height */
+    }
+    
+    html {
+        scroll-snap-type: none; /* Disable snap on mobile for better usability */
+    }
+
+    .header-top {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    #search-section {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .animation-container {
+        height: 40vh; /* Give it a fixed height */
+    }
+    
+    .search-container {
+        height: auto;
+        min-height: 30vh;
+    }
+}
